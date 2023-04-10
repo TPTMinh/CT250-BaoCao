@@ -1,0 +1,160 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Website Bán Sách</title>
+    <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <script src="~/Scripts/modernizr-2.6.2.js"></script>
+    <link href="~/Content/screen.css" rel="stylesheet" />
+    <link href="~/Content/fonts.css" rel="stylesheet" />
+    <link href="~/Content/css.css" rel="stylesheet" />
+    <link href="~/Content/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="~/Content/nivo-slider.css" rel="stylesheet" />
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="~/Scripts/jquery.nivo.slider.js"></script>
+</head>
+<body>
+    @*P_1*@
+    <section class="blank">
+        @* P_1.1 *@
+        <div class="flash">
+            <div class="phone">
+                <i class="fa fa-mobile" aria-hidden="true"></i>Liên hệ:+84 38 707 4356
+            </div>
+            <div class="dangki_dangnhap">
+                @Html.Action("GioHangPartial", "GioHang")
+                <i class="" aria-hidden="true" target="_blank"></i>@Html.ActionLink("Đăng Kí", "DangKi", "NguoiDung", null, htmlAttributes: new { @class = "DangKi" })
+                <i class="" aria-hidden="true" target="_blank"></i>@Html.ActionLink("Đăng Nhập", "DangNhap", "NguoiDung", null, htmlAttributes: new { @class = "DangNhap" })
+
+                <i class="" aria-hidden="true" target="_blank"></i>@Html.ActionLink("Trang Quản Trị", "Login", "Admin", null, htmlAttributes: new { @class = "DangNhap" })
+            </div>
+        </div>
+        @*p_1.2 *@
+        <div class="flash success" style="background-color:forestgreen">
+            <div class="timkiem">
+                @using (Html.BeginForm("KetQuaTimKiem", "TimKiem", FormMethod.Post))
+                {
+                    @Html.TextBox("txtTimKiem", "", htmlAttributes: new { @class = "TextBoxTimKiem", @placeholder = "Nhập Vào Từ Tìm Kiếm " })
+                    <button class="btntimkiem" type="submit"></button>
+                }
+            </div>
+            <div class="menu-top">
+                <ul>
+                    <li><a href="@Url.Action("Index","Home")"> Trang Chủ</a></li>
+                    <li><a href="@Url.Action("GioiThieu","Home")"> Giới Thiệu</a></li>
+                    <li><a href="@Url.Action("Index","Home")"> Sách</a></li>
+                    <li><a href="@Url.Action("TinTuc","About")"> Tin Tức</a></li>
+                    <li><a href="@Url.Action("LienHe","About")"> Liên Hệ</a></li>
+                </ul>
+            </div>
+        </div>
+    </section>
+    @* P_2*@
+    <section id="divMenuSlider">
+        @*Div Menu Trái*@
+        <div id="divMenuLeft"></div>
+        @*Chèn div nivoslider*@
+        <div id="slider" class="nivoSlider">
+            <img src="~/hinhanh/1.png" />
+            <img src="~/hinhanh/2.png" />
+            <img src="~/hinhanh/3.png" />
+            <img src="~/hinhanh/4.png" />
+        </div>
+        <div style="clear:both"></div>
+    </section>
+
+    <section>
+        <div>
+            <div>
+                <div>
+                   @**@
+                </div>
+                <br />
+                <hr />
+            </div>
+        </div>
+        <div class="noidung" style="margin:1px 1px 1px 1px">
+            @RenderBody()
+        </div>
+    </section>
+    <section>
+        @*Phần chủ đề*@
+        <div>
+          @Html.Action("ChuDePartial", "ChuDe")
+        </div>
+    </section>
+    <section>
+        <script src="~/Scripts/js-jquery.js"></script>
+        <div class="content ">
+            <div class="container">
+                <div>
+                    <h2> Bản đồ :</h2>
+                    <hr />
+                    <div>
+                        <iframe width="770" height="510" id="gmap_canvas" src="https://maps.google.com/maps?q=Đại Học Cần Thơ&t=&z=18&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section>
+        <div class="footer" style="">
+            <div class="end">
+                <div class="container">
+                    <div class="col-md-4">
+                        <div class="footer_container">
+                            <h3>Thông Tin Liên Hệ </h3>
+                            <p style="background: url(images/loca.png) no-repeat left center">Địa chỉ: Ninh Kiều - Cần Thơ</p>
+                            <p style="background: url(images/phone.png) no-repeat left center">Điện thoại:+84387074356 </p>
+                            <p style="background: url(images/mail.png) no-repeat left center">Email: minhb1704754@student.edu.vn</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="footer_container">
+                            <h3>QUY ĐỊNH & CHÍNH SÁCH</h3>
+                            <p><a href="#" style="color: #a7a7a7">QĐ đổi hàng và hoàn trả tiền</a></p>
+                            <p><a href="#" style="color: #a7a7a7">Quy Định</a></p>
+                            <p><a href="#" style="color: #a7a7a7">Chính sách cửa hàng</a></p>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="footer_container">
+                            <h3>Hỗ trợ online</h3>
+                            <div style="line-height: 31px; color: white;">
+                                @*<span>Số người đang Online:</span>*@
+                                @*<asp:Label ID="lblsonguoiOnline" runat="server" Text=""></asp:Label>*@
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div>
+            <a href="#" class="button button-buy">Cảm Ơn Mọi Người Đã Ủng Hộ&copy;</a>
+        </div>
+    </section>
+</body>
+
+<script type="text/javascript">
+    $(window).load(function () {
+        $('#slider').nivoSlider({
+            controlNav: false, //1,2,3...,navigation
+            nextText: '',
+            prevText: ''
+
+        });
+    });
+</script>
+<script>
+    (function (d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.8&appId=1838823719729580";
+        fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
+</script>
+
+</html>

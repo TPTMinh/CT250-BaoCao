@@ -1,0 +1,13 @@
+﻿
+@using BookStore.Models;
+@model List<NhaXuatBan>
+
+<h2 style="color:red;background:#ccc;padding:15px 0;text-align:center;">Danh sách nhà xuất bản : </h2>
+@{
+    foreach (var item in Model)
+    {
+        <a href="@Url.Action("SachTheoNhaXuatBan","NhaXuatBan",new { @Ma=item.MaNXB})" class="button button-submit">@item.TenNXB</a>
+    }
+}
+<br />
+

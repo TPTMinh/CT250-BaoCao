@@ -1,0 +1,15 @@
+﻿
+@using BookStore.Models;
+@model List<NhaXuatBan>
+@{
+    ViewBag.Title = "DanhMucNhaXuatBan";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Danh Mục Nhà Xuất Bản</h2>
+
+@foreach (var item in Model)
+{
+    <a href="@Url.Action("SachTheoNhaXuatBan","NhaXuatBan",new {@Ma=item.MaNXB})" class="button button-submit">@item.TenNXB</a>
+}
+

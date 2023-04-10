@@ -1,0 +1,36 @@
+﻿@using BookStore.Models;
+@model List<Sach>
+@{
+    ViewBag.Title = "SachTheoNhaXuatBan";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<h2>Sách Theo Nhà Xuất Bản</h2>
+@if (Model.Count == 0)
+{
+    <h1>@ViewBag.Sach</h1>
+}
+
+@{ int i = 0;}
+@foreach (var item in Model)
+{
+    i++;
+    <div class="sanpham" style="float:left;text-align:center; margin:0 4%">
+        <a href="@Url.Action("XemChiTiet","Sach",new { @Ma=item.MaSach})"><img src="~/HinhAnhSP/@item.AnhBia" alt="Image" style="width:150px;height:150px;" /></a><br />
+        @if (item.TenSach.Length < 20)
+        {
+            <div class="tenSach" style="float:left;color:#000;font-weight:bold "><strong>Tên Sách:</strong> @item.TenSach</div><br />
+        }
+        else
+        {
+            <div class="tenSach" style="float:left;color:#000;font-weight:bold"><strong>Tên Sách:</strong>@item.TenSach.Substring(0, 20) ... </div><br />
+        }
+        <div class="gia" style="float:left;color:red;font-size:20px;font-weight:bold"><strong>Gía:</strong>@string.Format("{0:0,0}", item.GiaBan) <strong>vnd</strong></div><br />
+    </div>
+    if (i % 3 == 0)
+    {
+        <hr />
+    }
+}
+<div style="clear:both"></div>
+
+

@@ -1,0 +1,43 @@
+﻿@using BookStore.Models;
+@model List<ChiTietDonHang>
+<table class="table table-bordered table-hover table-condensed table-striped">
+    <thead>
+        <tr>
+            <th>Mã đơn hàng:</th>
+            <th>Tên sách:</th>
+            <th>Số lượng:</th>
+
+            <th>Mã sách:</th>
+            <th>Đơn giá:</th>
+        </tr>
+    </thead>
+    @{double tongTien = 0;}
+    @foreach (var item in Model)
+    {
+        tongTien += (double)(item.DonGia * item.SoLuong);
+    }
+    @{
+
+        QuanLiBanSachEntities db = new QuanLiBanSachEntities();
+        DonHang dh = db.DonHangs.Find(Model[0].MaDonHang);
+       
+    }
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.MaDonHang</td>
+                <td>@Html.DisplayFor(modelItem => item.Sach.TenSach)</td>
+                <td>@item.SoLuong</td>
+                <td>@item.MaSach</td>
+                <td>@item.DonGia</td>
+            </tr>
+        }
+        <tr>
+            <th colspan="4">Tong Tien:</th>
+            <th> @string.Format("{0:0,0}", tongTien)</th>
+        </tr>
+        
+
+    </tbody>
+</table>

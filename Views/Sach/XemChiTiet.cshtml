@@ -1,0 +1,23 @@
+﻿
+@using BookStore.Models;
+@model Sach
+
+@{
+    ViewBag.Title = "XemChiTiet";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div>
+    <div><img src="~/HinhAnhSP/@Model.AnhBia" style="width:200px;height:200px;float:left;margin-right:30px;" /></div>
+    <strong style="color:red;font-weight:inherit">Mã Sách:</strong><span style="font-weight:inherit"> @Model.MaSach</span><br />
+    <strong style="color:red;font-weight:inherit">Tên Sách:</strong><span style="font-weight:inherit">@Model.TenSach</span><br />
+    <strong style="color:red;font-weight:inherit">Chủ Đề:</strong><span style="font-weight:inherit">@Model.ChuDe.TenChuDe</span><br />
+    <strong style="color:red;font-weight:inherit">Nhà Xuất Bản:</strong><span style="font-weight:inherit">@Model.NhaXuatBan.TenNXB</span><br />
+    <strong style="color:red;font-weight:inherit">Thông Tin:</strong><span style="font-weight:inherit">@Model.MoTa</span><br />
+    <strong style="color:red;font-weight:inherit">Giá Bán:</strong><span style="font-weight:inherit">@string.Format("{0:0,0 }", Model.GiaBan) vnd</span><br />
+    @using (Html.BeginForm("ThemGioHang", "GioHang", new { @iMaSach = Model.MaSach, @strURL = Request.Url.ToString() }))
+    {
+        <input type="submit" style="cursor:pointer" value="Mua hàng" id="btnGioHang" class="btn btn-primary">
+    }
+</div>
+<div style="clear:both"></div>
+

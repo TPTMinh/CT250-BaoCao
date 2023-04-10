@@ -1,0 +1,16 @@
+﻿
+@using BookStore.Models;
+@model List<ChuDe>
+@{
+    ViewBag.Title = "DanhMucChuDe";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Danh Mục Chủ Đề</h2>
+
+    @foreach (var item in Model)
+    {
+        @*<a href="@Url.Action("SachTheoChuDe","ChuDe", new { @Ma=item.MaChuDe})" class="button button-delete">@item.TenChuDe</a>*@
+        <a id="btnChuDe" style="width: 250px; font-size: 11pt; color: aliceblue;  text-decoration: none" href="@Url.Action("SachTheoChuDe","ChuDe", new {@Ma=item.MaChuDe })" class="button button-submit"> @item.TenChuDe</a>
+        <br />
+    }

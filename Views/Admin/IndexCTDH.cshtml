@@ -1,0 +1,65 @@
+﻿@using BookStore.Models;
+@using PagedList.Mvc;
+@model PagedList.PagedList<ChiTietDonHang>
+
+@{
+    ViewBag.Title = "IndexCTDH";
+    Layout = "~/Views/Shared/Admin.cshtml";
+}
+
+<h2>Chi tiết đơn hàng : </h2>
+@*<p>
+    @Html.ActionLink("Thêm Mới", "ThemMoi")
+</p>*@
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.First().MaDonHang)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().DonHang)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().DonGia)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().SoLuong)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().MaSach)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.MaDonHang)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DonHang)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DonGia)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SoLuong)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MaSach)
+            </td>
+            <td>
+                @*@Html.ActionLink("Chỉnh Sửa", "ChinhSua", new { @iMaSach = item.MaDonHang }) |*@
+                @Html.ActionLink("Hiển Thị", "HienThi", new { @iMaSach = item.MaDonHang }) |
+                @*@Html.ActionLink("Xóa", "Xoa", new { @iMaSach = item.MaDonHang })*@
+            </td>
+        </tr>
+    }
+</table>
+Trang @(Model.PageCount<Model.PageNumber ? 0 : Model.PageNumber)/@Model.PageCount;
+@Html.PagedListPager(Model, page => Url.Action("Index", "Admin", new { page = page })).
+
+
+
+
