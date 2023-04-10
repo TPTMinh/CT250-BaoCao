@@ -1,0 +1,18 @@
+﻿input[type=text], input[type="password"], textarea {
+    border: 10;
+    padding: 1em 1.3em;
+    margin: 9px;
+    margin-left: 14px;
+}
+input[type="password"]{
+    border: 10;
+    padding: 1em 1.3em;
+    margin: 9px;
+    margin-left: 14px;
+}
+textarea {
+    border: 10;
+    padding: 1em 1.3em;
+    margin: 9px;
+    margin-left: 14px;
+}
